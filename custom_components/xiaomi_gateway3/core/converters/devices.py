@@ -3224,4 +3224,53 @@ DEVICES += [{
     "spec": [
         Converter("switch", "switch", mi="2.p.1", enabled=None),  # bool
     ],
+}, {
+   #https://home.miot-spec.com/spec?type=urn:miot-spec-v2:device:switch:0000A003:090615-x6kw1:1:0000C808
+    11652: ["PTX", "Smart Single Wall Switch", "PTX-X61"],
+    "spec": [
+        Converter("switch", "switch", mi="2.p.1"),
+        MapConv("mode_1", "select", mi="2.p.2", map={0: "Wired And Wireless", 1: "Wireless"}),
+    ],
+ }, {
+    #https://home.miot-spec.com/spec?type=urn:miot-spec-v2:device:switch:0000A003:090615-x6kw2:1:0000C809
+    11653: ["PTX", "Smart Double Wall Switch", "PTX-X62"],
+    "spec": [
+        Converter("channel_1", "switch", mi="2.p.1"),
+        Converter("channel_2", "switch", mi="3.p.1"),
+        MapConv("mode_1", "select", mi="2.p.2", map={0: "Wired And Wireless", 1: "Wireless"}),
+        MapConv("mode_2", "select", mi="3.p.2", map={0: "Wired And Wireless", 1: "Wireless"}),
+    ],
+}, {
+   #https://home.miot-spec.com/spec?type=urn:miot-spec-v2:device:switch:0000A003:090615-x6kw3:1:0000C810
+    11654: ["PTX", "Smart Triple Wall Switch", "PTX-X63"],
+    "spec": [
+        Converter("channel_1", "switch", mi="2.p.1"),
+        Converter("channel_2", "switch", mi="3.p.1"),
+        Converter("channel_3", "switch", mi="4.p.1"),
+        MapConv("mode_1", "select", mi="2.p.2", map={0: "Wired And Wireless", 1: "Wireless"}),
+        MapConv("mode_2", "select", mi="3.p.2", map={0: "Wired And Wireless", 1: "Wireless"}),
+        MapConv("mode_3", "select", mi="4.p.2", map={0: "Wired And Wireless", 1: "Wireless"}),
+    ],
+}, {
+    #https://home.miot-spec.com/spec?type=urn:miot-spec-v2:device:remote-control:0000A021:090615-akswr2:1
+    14609: ["PTX", "Double Wireless Switch", "PTX-AK2-QMIMC"],
+    "spec": [
+        MiBeacon, BLEAction, Button1, Button2, ButtonBoth,
+        EventConv("action", mi="2.e.1012", value="button_1_single"),
+        EventConv("action", mi="4.e.1012", value="button_2_single"),
+        EventConv("action", mi="2.e.1014", value="button_1_hold"),
+        EventConv("action", mi="4.e.1014", value="button_2_hold"),
+    ],
+}, {
+   #https://home.miot-spec.com/spec?type=urn:miot-spec-v2:device:remote-control:0000A021:090615-akswr3:1
+   14610: ["PTX", "Triple Wireless Switch", "PTX-AK3-QMIMC"],
+    "spec": [
+        MiBeacon, BLEAction, Button1, Button2, Button3,ButtonBoth,
+        EventConv("action", mi="2.e.1012", value="button_1_single"),
+        EventConv("action", mi="4.e.1012", value="button_2_single"),
+        EventConv("action", mi="5.e.1012", value="button_3_single"),
+        EventConv("action", mi="2.e.1014", value="button_1_hold"),
+        EventConv("action", mi="4.e.1014", value="button_2_hold"),
+        EventConv("action", mi="5.e.1014", value="button_3_hold"),
+    ],
 }]
